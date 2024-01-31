@@ -1,0 +1,42 @@
+h6{
+    font-family: monospace;
+}
+#first{
+    font-style: italic;
+}
+#second{
+    font-style: italic;
+}
+#third{
+    font-style: italic;
+}
+#fourth{
+    font-style: italic;
+}
+body{
+    background-color: antiquewhite;
+    font-family :serif;
+    font-size: 16px;
+}
+
+h1{
+    text-align:center;
+    background: aquamarine;
+    font-size: 2em;
+}
+h3{
+    text-decoration: underline;
+}
+h2{
+    color: indianred;
+    text-align: center;
+}
+.img{
+    text-align: center;
+}
+h6{
+    text-align: center;
+}
+.cation{
+    text-align: center;
+}
