@@ -1,0 +1,49 @@
+from django.db import models
+
+# Create your models here.
+
+
+class Company(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=250)
+    description = models.TextField(default="No description")
+    city = models.CharField(max_length=250)
+    address = models.TextField(max_length=250)
+
+    class Meta:
+        verbose_name = "Company"
+        verbose_name_plural = "Companies"
+        ordering = ['id']
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'city': self.city,
+            'address': self.address
+        }
+
+
+class Vacancy(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=250)
+    description = models.TextField(default="No description")
+    salary = models.FloatField(default=0)
+    company = models.ManyToManyField(Company)
+
+    class Meta:
+        verbose_name = "Vacancy"
+        verbose_name_plural = "Vacancies"
+        ordering = ['id']
+
+    def to_json(self):
+        data = list(self.company.values())
+        y = list(x['id'] for x in data)
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'salary': self.salary,
+            'company': y
+        }
